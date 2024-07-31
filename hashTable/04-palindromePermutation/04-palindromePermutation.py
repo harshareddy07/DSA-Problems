@@ -1,3 +1,5 @@
+// solution 1
+
 def get_char_number(c: str) -> int:
     if 'a' <= c <= 'z':
         return ord(c) - ord('a')
