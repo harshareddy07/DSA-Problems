@@ -8,3 +8,11 @@ EXAMPLE
 
 Input: "Mr John Smith ", 13 
 Output: "Mr%20John%20Smith" 
+
+
+How:
+
+The algorithm employs a two-scan approach. In the first scan, we 
+count the number of spaces. By tripling this number, we can compute how many extra characters we will 
+have in the final string. In the second pass, which is done in reverse order, we actually edit the string. When 
+we see a space, we replace it with %20. If there is no space, then we copy the original character.
