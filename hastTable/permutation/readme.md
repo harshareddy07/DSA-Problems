@@ -23,8 +23,11 @@ Dictionary Approach : letters = {}
 
 **Advantages and Disadvantages:**  
   List Approach: 
+  
     Advantages: Simple and efficient for fixed-size character sets (like ASCII). Predictable space usage. 
     Disadvantages: Limited to small character sets. Not flexible for larger or variable character sets (e.g., Unicode). 
+    
   Dictionary Approach: 
+  
     Advantages: Flexible and handles any character set size. More readable and adaptable. 
     Disadvantages: Potentially higher space usage if the character set is large. Slightly more overhead due to dynamic hashing and potential collisions.
