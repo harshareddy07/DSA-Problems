@@ -1,18 +1,18 @@
 
 def replaceSpaceWith(str, trueLength):
-    print("st", str)
+   
     spaceCount = 0
     index = 0
 
     for c in range(trueLength):
         if(str[c] == ' '):
             spaceCount+=1
-    
+    // find total length required
     index = trueLength + spaceCount*2
-    print("index", index, spaceCount)
+ 
     s_list = list(str)
     for ind in range(trueLength - 1, -1, -1):
-        print("i", ind, index)
+         // copy the character to a new string if there is space if there is space then fill 3 places with %20
         if str[ind] != " ":
             s_list[index-1] = str[ind]
             index-=1
