@@ -6,8 +6,11 @@ one edit (or zero edits) away.**
 **EXAMPLE** 
 
 pale, ple -> true 
+
 pales, pale -> true 
+
 pale, bale -> true 
+
 pale, bae -> false
 
 **Explanation**
