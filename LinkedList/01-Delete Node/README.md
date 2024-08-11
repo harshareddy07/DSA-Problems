@@ -15,3 +15,6 @@ Solution  2 :
   and runner which checks all subsequent nodes for duplicates.**
   
   This code runs in O ( 1) space, but O ( N2) time
+
+   **The term "no buffer" generally means that you are not using any additional data structures (like arrays, hash tables, or other forms of storage) to temporarily  
+    hold or store data while processing.**
