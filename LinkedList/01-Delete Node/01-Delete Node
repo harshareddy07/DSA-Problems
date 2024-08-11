@@ -1,0 +1,64 @@
+class CreateNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def begin(self, data):
+        new = CreateNode(data)
+        new.next = self.head
+        self.head = new
+        
+    def end(self, data):
+        new = CreateNode(data)
+        if self.head is None:
+            self.head = new
+        else:
+            n = self.head 
+            while n.next is not None:
+                n = n.next
+            n.next = new
+
+
+    def printlist(self):
+        if self.head is None:
+            print("Empty")
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data)
+                n = n.next
+    
+    def deleteNode(self):
+        setI = set()
+        n = self.head
+        while n != None:
+            
+            if n.data in setI :
+                previousNode.next  = n.next
+            else:
+                setI.add(n.data)
+                previousNode = n
+                
+            n = n.next
+                
+        
+    
+        
+ll = LinkedList()
+ll.end(10)
+ll.end(30)
+ll.end(10)
+ll.end(40)
+ll.end(20)
+ll.end(40)
+
+ll.printlist()
+ll.deleteNode()
+print("After Deleting Duplicates")
+ll.printlist()
+
