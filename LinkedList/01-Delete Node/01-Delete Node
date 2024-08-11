@@ -45,8 +45,17 @@ class LinkedList:
                 previousNode = n
                 
             n = n.next
-                
-        
+
+    def twoPointer(self): 
+        current = self.head 
+        while current != None:          
+            runner = current      
+            while runner.next != None:               
+                if runner.next.data == current.data:
+                    runner.next = runner.next.next          
+                else:
+                    runner = runner.next          
+            current = current.next      
     
         
 ll = LinkedList()
@@ -58,7 +67,13 @@ ll.end(20)
 ll.end(40)
 
 ll.printlist()
+
+// solution 1 using hashtable
 ll.deleteNode()
 print("After Deleting Duplicates")
 ll.printlist()
 
+// solution 2 using runner technique or 2 pointers (no buffer)
+print("Using runner tenchinque - no buffer")
+ll.twoPointer()
+ll.printlist()
