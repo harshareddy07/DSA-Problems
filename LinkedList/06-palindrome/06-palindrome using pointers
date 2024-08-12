@@ -1,0 +1,74 @@
+class CreateNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def end(self, data):
+        new = CreateNode(data)
+        if self.head is None:
+            self.head = new
+        else:
+            n = self.head 
+            while n.next is not None:
+                n = n.next
+            n.next = new
+
+
+    def printlist(self):
+        if self.head is None:
+            print("Empty")
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data)
+                print("=>")
+                n = n.next
+    
+
+ 
+def checkPalindrome(l1):
+    
+    ## using runner technique 
+    slow = l1
+    fast = l1
+     
+    stack = []
+    while fast != None and fast.next != None:
+        stack.append(slow.data)
+        slow = slow.next
+        fast = fast.next.next
+        
+    if fast != None:
+        slow = slow.next
+        
+    
+    while slow != None:
+        val = stack.pop()
+        
+        if val != slow.data:
+            return False
+            
+        slow = slow.next
+    
+    return True
+    
+
+
+ll = LinkedList()
+
+ll.end(7)
+ll.end(1)
+ll.end(3)
+ll.end(1)
+ll.end(7)
+print("ll*******")
+ll.printlist()
+currentll = ll.head
+result = checkPalindrome(currentll)
+print("result palindrome or not : " ,  result)
+
