@@ -1,0 +1,85 @@
+class CreateNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def end(self, data):
+        new = CreateNode(data)
+        if self.head is None:
+            self.head = new
+        else:
+            n = self.head 
+            while n.next is not None:
+                n = n.next
+            n.next = new
+
+
+    def printlist(self):
+        if self.head is None:
+            print("Empty")
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data)
+                print("=>")
+                n = n.next
+    
+def addLists(ll, l2, carry = 0):
+    
+    if ll ==  None and l2 == None and carry == 0:
+        return None
+    
+    value = carry
+    if ll != None:
+        value = value + ll.data
+    
+    if l2 != None:
+        value = value + l2.data
+    
+    # Create the new node with the digit value
+    result_node = CreateNode(value % 10)
+    
+    # Recursively calculate the next node
+    if ll != None and l2 != None:
+        next_node  = addLists(ll.next if ll != None else None,
+            l2.next if l2 != None else None, 1 if value >= 10 else 0)
+
+        result_node.next = next_node
+
+    return result_node
+
+def addListsWrapper(l1, l2):
+    result_head = addLists(l1.head, l2.head)
+    print("result_head", result_head.data)
+    result_linked_list = LinkedList()
+    result_linked_list.head = result_head
+    return result_linked_list
+        
+ll = LinkedList()
+l2 = LinkedList()
+ll.end(7)
+ll.end(1)
+ll.end(6)
+
+
+l2.end(5)
+l2.end(9)
+l2.end(2)
+
+currentll = ll.head
+currentl2 = l2.head
+
+
+print("ll*******")
+ll.printlist()
+print("l2*******")
+l2.printlist()
+
+l3 = addListsWrapper(ll, l2)
+print("l3 (Result)*******")
+l3.printlist()
