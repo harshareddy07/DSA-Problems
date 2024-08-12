@@ -1,0 +1,83 @@
+class CreateNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def end(self, data):
+        new = CreateNode(data)
+        if self.head is None:
+            self.head = new
+        else:
+            n = self.head 
+            while n.next is not None:
+                n = n.next
+            n.next = new
+
+
+    def printlist(self):
+        if self.head is None:
+            print("Empty")
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data)
+                print("=>")
+                n = n.next
+    
+def reverAndClone(n):
+    result_linked_list = LinkedList()
+    head = None
+    while n != None:
+       # Create a new node with the same data
+        new_node = CreateNode(n.data)
+        
+        # Point the new node's next to the current head (to reverse the order)
+        new_node.next = head
+        
+        # Move the head to the new node
+        head = new_node
+        
+        # Move to the next node in the original list
+        n = n.next
+    
+    result_linked_list.head = head
+    return result_linked_list
+    
+ 
+def checkPalindrome(l1, l2):
+    while l1 != None and l2 != None:
+        if l1.data != l2.data:
+            return False
+        
+        l1 = l1.next
+        l2 = l2.next
+    
+    return True
+    
+
+
+ll = LinkedList()
+
+ll.end(7)
+ll.end(1)
+ll.end(7)
+
+
+print("ll*******")
+ll.printlist()
+
+currentll = ll.head
+l2 = reverAndClone(currentll)
+
+
+currentl2 = l2.head
+print("l2*******")
+l2.printlist()
+result = checkPalindrome(currentll, currentl2)
+print("result palindrome or not : " ,  result)
+
