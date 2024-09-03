@@ -1,0 +1,67 @@
+
+
+class Stack():
+    def __init__(self, stack_size):
+        self.stack_number = 3 
+        self.stack_capacity = stack_size
+        self.values = [0] * (stack_size * self.stack_number)
+        self.size = [0] * stack_size 
+        
+        
+    def push(self, stack_num, value):
+    
+        self.size[stack_num] += 1
+        self.values[self.topIndex(stack_num)] = value
+        
+       
+    
+    def pop(self, stack_num):
+
+        index = self.topIndex(stack_num)
+        value = self.values[index]
+        self.values[index] = 0
+        self.size[stack_num] -= 1
+        return value
+        
+    def peep(self, stack_num):
+
+        index = self.topIndex(stack_num)
+        value = self.values[index]
+        return value
+        
+        
+    def is_empty(self, stack_num):
+        """Return if the stack is empty."""
+        return self.sizes[stack_num] == 0
+
+    def is_full(self, stack_num):
+        """Return if the stack is full."""
+        return self.sizes[stack_num] == self.stack_capacity
+
+        
+    def topIndex(self, stack_num):
+        offset = stack_num * self.stack_capacity
+        size = self.size[stack_num]
+        val = offset + size - 1
+        
+        return val
+        
+        
+v = Stack(3)
+v.push(0,1)
+v.push(2,9)
+v.push(2,7)
+v.push(1,3)
+v.push(1,5)
+v.push(1,6)
+v.push(0,8)
+v.push(0,2)
+v.push(2,4)
+print("Before Pop",v.values )
+popValue = v.pop(2)
+popValue = v.pop(1)
+popValue = v.pop(1)
+print("popValue", popValue)
+print("After Pop",v.values)
+peepValue = v.peep(1)
+print("peepValue", peepValue)
