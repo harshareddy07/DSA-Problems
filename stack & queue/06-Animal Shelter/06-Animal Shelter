@@ -1,1 +1,73 @@
-c
+from collections import deque
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        self.order = 0  # Order will act as a timestamp to track the sequence of arrival
+
+    def set_order(self, order):
+        self.order = order
+
+    def get_order(self):
+        return self.order
+
+    def is_older_than(self, other):
+        """Compares orders of animals to return the older one."""
+        return self.order < other.get_order()
+
+
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+
+
+class Cat(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+
+
+class AnimalQueue:
+    def __init__(self):
+        self.dogs = deque()  # Queue for dogs
+        self.cats = deque()  # Queue for cats
+        self.order = 0  # Acts as a timestamp
+
+    def enqueue(self, animal):
+        """
+        Adds an animal to the queue. The order attribute is used as a timestamp
+        so we can compare the insertion order of dogs and cats.
+        """
+        animal.set_order(self.order)
+        self.order += 1
+
+        if isinstance(animal, Dog):
+            self.dogs.append(animal)
+        elif isinstance(animal, Cat):
+            self.cats.append(animal)
+
+    def dequeue_any(self):
+        """
+        Dequeues the oldest animal, whether it's a dog or a cat. It compares
+        the orders of the animals at the front of the dog and cat queues.
+        """
+        if len(self.dogs) == 0:
+            return self.dequeue_cats()
+        elif len(self.cats) == 0:
+            return self.dequeue_dogs()
+
+        # Peek at the front of both queues
+        dog = self.dogs[0]
+        cat = self.cats[0]
+
+        if dog.is_older_than(cat):
+            return self.dequeue_dogs()
+        else:
+            return self.dequeue_cats()
+
+    def dequeue_dogs(self):
+        """Dequeues the oldest dog."""
+        return self.dogs.popleft()
+
+    def dequeue_cats(self):
+        """Dequeues the oldest cat."""
+        return self.cats.popleft()
