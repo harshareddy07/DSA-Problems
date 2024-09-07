@@ -1,0 +1,42 @@
+
+
+class Stack():
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+        
+        
+    def push(self, value):
+        
+        self.s1.append(value)
+        
+    def peek(self, stack):
+        return stack[-1]
+    
+    def sort(self):
+        while len(self.s1) > 0:
+            tmp = self.s1.pop()
+            while len(self.s2) > 0 and  self.peek(self.s2) > tmp:
+                    self.s1.append(self.s2.pop())
+                
+            self.s2.append(tmp)
+        
+        print("sorted list", self.s2)
+
+    
+// input
+        
+v = Stack()
+v.push(5)
+v.push(3)
+v.push(7)
+v.push(2)
+v.push(4)
+print("s1", v.s1)
+v.sort()
+
+// output 
+s1 [5, 3, 7, 2, 4]
+sorted list [2, 3, 4, 5, 7]
+
+=== Code Execution Successful ===
