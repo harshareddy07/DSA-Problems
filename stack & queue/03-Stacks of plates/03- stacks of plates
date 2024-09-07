@@ -1,0 +1,158 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.above = None
+        self.below = None
+        
+
+
+class Stack():
+    def __init__(self, capacity):
+        self.size = 0
+        self.bottom = None
+        self.top = None
+        self.capacity = capacity
+        
+    def join(self, above, below):
+        if above is not None:
+            below.above = above
+        if below is not None:
+            above.below = below
+    
+    def is_full(self):
+        return self.size == self.capacity
+    
+    def is_empty(self):
+        return self.size == 0
+        
+    def push(self, value):
+        
+        if self.size >= self.capacity:
+            return False
+            
+        self.size += 1
+        node = Node(value)
+        if self.size == 1:
+            self.bottom = node
+        else:
+            self.join(node, self.top)
+        self.top = node
+     
+    def pop(self):
+        self.size -= 1
+        node = self.top
+        self.top  = self.top.below
+        return node.value
+    
+    def printTree(self):
+        node = self.bottom
+    
+        while node != None:
+            nod = node
+            print("=>", nod.value)
+            node = node.above
+        
+    def remove_bottom(self):
+
+        node = self.bottom
+        self.bottom = self.bottom.above
+        if self.bottom is not None:
+            self.bottom.below = None
+        self.size -= 1
+        return node.value
+
+class SetofStacks():
+    def __init__(self, capacity):
+        self.stacks = []
+        self.capacity = capacity
+        
+    def get_last_stack(self):
+        if len(self.stacks) == 0:
+            return None
+        return self.stacks[-1] 
+        
+    def push(self, value):
+        last = self.get_last_stack()
+        if last is not None and not last.is_full():
+            last.push(value)
+        else:
+            stack = Stack(self.capacity)
+            stack.push(value)
+            self.stacks.append(stack)
+            
+    def pop(self):
+        last = self.get_last_stack()
+
+        value = last.pop()
+        if last.is_empty():
+            self.stacks.pop()
+        return value
+        
+    def pop_at(self, index):
+        return self.left_shift(index, remove_top=True)
+        
+    def is_empty(self):
+        last = self.get_last_stack()
+        return last is None or last.is_empty()
+        
+    def left_shift(self, index, remove_top):
+        stack = self.stacks[index]
+        
+        if remove_top:
+            removed_item  = stack.pop()
+        else:
+            removed_item  = stack.remove_bottom()
+            
+        if stack.is_empty():
+            self.stacks.pop(index)
+        elif len(self.stacks) > index + 1:
+            # Shift the bottom of the next stack into this stack
+            value = self.left_shift(index + 1, remove_top=False)
+            stack.push(value)
+
+        return removed_item
+        
+    def printStack(self):
+        for i in self.stacks:
+            stack = i 
+            stack.printTree()
+            print("****")
+
+// input     
+v = SetofStacks(3)
+v.push(5)
+v.push(3)
+v.push(7)
+v.push(2)
+v.push(4)
+v.push(6)
+print("Tree - before removing")
+v.printStack()
+print(v.pop())       # Output: 6
+print(v.pop_at(0))   # Output: 7 (pops from the first stack)
+print(v.pop_at(1)) 
+print("Tree - after removing")
+v.printStack()
+
+
+//ouput
+
+Tree - before removing
+=> 5
+=> 3
+=> 7
+****
+=> 2
+=> 4
+=> 6
+****
+6
+7
+4
+Tree - after removing
+=> 5
+=> 3
+=> 2
+****
+
+=== Code Execution Successful ===
