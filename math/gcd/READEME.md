@@ -7,6 +7,7 @@ def gcd(a, b):
         if a % res == 0 and b % res == 0:
             return res
         res -= 1
+        
 **Time Complexity: O(min(a, b)) — inefficient for large inputs**
 
 **Space Complexity: O(1)**
@@ -20,6 +21,7 @@ def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
+    
 **Time Complexity: O(log max(a, b)) — very efficient**
 
 **Space Complexity: O(1)**
