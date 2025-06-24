@@ -1,13 +1,13 @@
 **Approach 1. Brute Force**
 Check all numbers from min(a, b) down to 1 to find the largest divisor common to both.
 
-def gcd(a, b):
-    res = min(a, b)
-    while res > 0:
-        if a % res == 0 and b % res == 0:
-            return res
-        res -= 1
-        
+    def gcd(a, b):
+        res = min(a, b)
+        while res > 0:
+            if a % res == 0 and b % res == 0:
+                return res
+            res -= 1
+            
 **Time Complexity: O(min(a, b)) — inefficient for large inputs**
 
 **Space Complexity: O(1)**
