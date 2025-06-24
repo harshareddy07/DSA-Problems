@@ -17,10 +17,10 @@ Check all numbers from min(a, b) down to 1 to find the largest divisor common to
 **2. Euclidean Algorithm (Recommended)**
 Uses the property gcd(a, b) = gcd(b, a % b) recursively until b == 0.
 
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
     
 **Time Complexity: O(log max(a, b)) — very efficient**
 
