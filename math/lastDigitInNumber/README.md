@@ -3,7 +3,7 @@
 ## 🚀 Problem Statement
 
 You are given two non-negative integers `a` and `b` as **strings**. Your task is to compute the **last digit** of the value of \( a^b \), 
-without calculating the entire power directly.
+without calculating the entire power directly..
 
 ### Constraints:
 - `a` and `b` can be **very large** (up to 10⁵ digits)
