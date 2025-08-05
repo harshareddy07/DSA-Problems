@@ -1,3 +1,6 @@
+## This is a classic problem known as the Dutch National Flag problem, and it can be solved in one 
+## pass (O(n) time) and constant space (O(1)) without using built-in sort functions.
+    
 class Solution:
     def sort012(self, arr):
         # code here
