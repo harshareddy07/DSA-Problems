@@ -13,6 +13,6 @@ Output: false
 Explanation: None of the pair makes a sum of 0  
 
 Constraints:
-1 ≤ arr.size ≤ 105
--105 ≤ arr[i] ≤ 105
--2*105 ≤ target ≤ 2*105
+1 ≤ arr.size ≤ 105  
+-105 ≤ arr[i] ≤ 105  
+-2*105 ≤ target ≤ 2*105  
