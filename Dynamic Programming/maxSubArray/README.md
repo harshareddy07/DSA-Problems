@@ -35,3 +35,38 @@
 
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> If you have figured out the <code>O(n)</code> solution, try coding another solution using the <strong>divide and conquer</strong> approach, which is more subtle.</p>
+<pre>
+Position 0: number = 1
+- No previous sum, so current sum = 1
+- Best so far = 1
+
+Position 1: number = -3  
+- Previous sum was 1
+- Continue: 1 + (-3) = -2
+- Start fresh: -3
+- Choose: max(-2, -3) = -2
+- Best so far = max(1, -2) = 1
+
+Position 2: number = 2
+- Previous sum was -2
+- Continue: -2 + 2 = 0  
+- Start fresh: 2
+- Choose: max(0, 2) = 2 ← Start fresh is better!
+- Best so far = max(1, 2) = 2
+
+Position 3: number = 1
+- Previous sum was 2
+- Continue: 2 + 1 = 3
+- Start fresh: 1
+- Choose: max(3, 1) = 3 ← Continue is better!
+- Best so far = max(2, 3) = 3
+
+Position 4: number = -1
+- Previous sum was 3  
+- Continue: 3 + (-1) = 2
+- Start fresh: -1
+- Choose: max(2, -1) = 2 ← Continue is better!
+- Best so far = max(3, 2) = 3
+
+Final answer: 3
+</pre>
