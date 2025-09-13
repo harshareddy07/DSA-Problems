@@ -8,6 +8,14 @@ def depthFirstPrint (graph, source) :
         for item in graph[current]:
             stack.append(item)
     
+// Recursive
+
+def depthFirstPrint (graph, source) :
+    
+    print("current", current)
+    for neighbour in graph[current]:
+        depthFirstPrint(graph, neighbour)
+    
 
 
 
