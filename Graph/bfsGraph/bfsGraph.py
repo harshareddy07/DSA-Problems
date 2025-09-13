@@ -8,6 +8,18 @@ def breadthFirstPrint(graph, source):
         print("current", current)
         for item in graph[current]:
             queue.append(item)
+            
+def breadthFirstPrintRecursive(graph, queue):
+    if not queue:
+        return
+    
+    current = queue.popleft()
+    print("BFS:", current)
+    
+    for neighbour in graph[current]:
+        queue.append(neighbour)
+    
+    
 graph = {
   'a': ['c', 'b'],
   'b': ['d'],
@@ -18,3 +30,5 @@ graph = {
 }
 
 breadthFirstPrint(graph,'a')
+breadthFirstPrintRecursive(graph, queue)  # recurse with updated queue
+
