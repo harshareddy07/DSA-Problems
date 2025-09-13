@@ -12,8 +12,8 @@ def depthFirstPrint (graph, source) :
 
 def depthFirstPrint (graph, source) :
     
-    print("current", current)
-    for neighbour in graph[current]:
+    print("current", source)
+    for neighbour in graph[source]:
         depthFirstPrint(graph, neighbour)
     
 
