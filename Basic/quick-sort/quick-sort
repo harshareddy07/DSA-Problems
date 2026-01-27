@@ -8,6 +8,27 @@ def quick_sort(arr):
     right = [x for x in arr[1:] if x >= pivot]
     return quick_sort(left) + [pivot] + quick_sort(right)
 
+# implementation of quick sort in python using partition 
+def partition(arr, low, high):
+    print("low", low, high)
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+        print("ar---", arr)
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    print("arr", arr)
+    return i + 1
+
+def quick_sort(arr, low, high):
+    if low < high:
+        p = partition(arr, low, high)
+        print(p)
+        quick_sort(arr, low, p - 1)
+        quick_sort(arr, p + 1, high)
+
 
 if __name__ == '__main__':
     elements = [11,9,29,7,2,15,28]
