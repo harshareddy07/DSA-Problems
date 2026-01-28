@@ -1,17 +1,9 @@
-def Fibonacci(n, memo = {}):
-    
-    print("leel--->", n , memo)
-    
-    if n in memo:
-        return memo[n]
+def factorial(n):
     
     if n <= 1:
-        memo[n] = n
-        return n
+        return 1
         
-    memo[n] = Fibonacci(n-1,memo) + Fibonacci(n-2,memo) 
-    
-    return memo[n]
+    return n * factorial(n-1) 
         
     
-print(Fibonacci(6))
+print(factorial(6))
